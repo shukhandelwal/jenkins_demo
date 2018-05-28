@@ -17,9 +17,9 @@
 	<!--Full Deploy -->
 	<target name="Deploy">
 
-		<sf:deploy username="${sf.demo.username}" password="${sf.demo.password}"
-			serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${src.dir}"
-			rollbackOnError="true" logType="Debugonly" checkOnly="${sf.demo.checkOnly}">
+		<sf:deploy username="${SALESFORCE_USERNAME}" password="${SALESFORCE_PASSWORD}"
+			serverurl="${SALESFORCE_URL}" maxPoll="${sf.maxPoll}" deployRoot="${src.dir}"
+			rollbackOnError="true" logType="Debugonly" checkOnly="${CHECKONLY}">
 		</sf:deploy>
 	</target>
 	
