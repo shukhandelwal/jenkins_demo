@@ -1,0 +1,26 @@
+<project name="Build File 3" default="FullDeploy" basedir="."
+	xmlns:sf="antlib:com.salesforce">
+	<property name="src.dir" value="../src" />
+	<property environment="dev" />
+
+	<!-- Setting default value for username, password and session id properties 
+		to empty string so unset values are treated as empty. Without this, ant expressions 
+		such as ${sf.username} will be treated literally. Service hook test -->
+
+	<taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+		<classpath>
+			<pathelement location="../deploy/migration-tool/ant-salesforce.jar" />
+		</classpath>
+	</taskdef>
+
+	<!-- Deploy code and run tests. If test fails, rollback deploy. -->
+	<!--Full Deploy -->
+	<target name="Deploy">
+
+		<sf:deploy username="${sf.demo.username}" password="${sf.demo.password}"
+			serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${src.dir}"
+			rollbackOnError="true" logType="Debugonly" checkOnly="${sf.demo.checkOnly}">
+		</sf:deploy>
+	</target>
+	
+</project>
